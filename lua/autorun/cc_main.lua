@@ -21,14 +21,15 @@ CommandCommander.List = {
 }
 
 CommandCommander.Register = function (Name, Data)
-								if CommandCommander.List[Name] then Error("Tryed to register existing command!: "..Name) end
-								CommandCommander.List[Name] = {
-									Check = Data.Check or function() return true end,
-									Func = Data.Function or function(ply) ply:ChatPrint("Error: Function not set") end,
-									HELP = Data.info or "None Given"
-								}
-								
-							end
+	if CommandCommander.List[Name] then Error("Tryed to register existing command!: "..Name) end
+	
+		CommandCommander.List[Name] = {
+			Check = Data.Check or function() return true end,
+			Func = Data.Function or function(ply) ply:ChatPrint("Error: Function not set") end,
+			HELP = Data.info or "None Given"
+		}
+	
+end
 
 hook.Add( "PlayerSay", "CommandCommander_PlayerSay", function( ply, text, team )
 

@@ -1,6 +1,6 @@
 CommandCommander = CommandCommander or {} // Main Tabelle
 
-CommandCommander.CommandChar = "!"
+CommandCommander.Prefix = "!"
 
 
 CommandCommander.List = {
@@ -32,8 +32,8 @@ CommandCommander.Register = function (Name, Data)
 
 hook.Add( "PlayerSay", "CommandCommander_PlayerSay", function( ply, text, team )
 
-	if ( string.sub( text, 1, string.len( CommandCommander.CommandChar )  ) == CommandCommander.CommandChar ) then	
-		local CMD = string.sub( text,  string.len( CommandCommander.CommandChar ) + 1)
+	if ( string.sub( text, 1, string.len( CommandCommander.Prefix )  ) == CommandCommander.Prefix ) then	
+		local CMD = string.sub( text,  string.len( CommandCommander.Prefix ) + 1)
 		local CMD_A = string.Explode( " ", CMD )
 		
 		if CommandCommander.List[CMD_A[1]] then 
